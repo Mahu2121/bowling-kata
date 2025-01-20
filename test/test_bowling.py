@@ -20,14 +20,14 @@ def test_normal_score():
 
     PINS = "12345678911234567891"       # PINS == 92
     card = ScoreCard(PINS)
-    assert 92 == card.get_score_card_result(PINS)
+    assert 92 == card.get_score()
 
 def test_missed_rolls():
     PINS = "1234-6-8911234-6-891"      # PINS == 68
     card = ScoreCard(PINS)
-    assert 68 == card.get_score_card_result(PINS)
+    assert 68 == card.get_score()
 
 def test_score_spare():
-    PINS = "5/5/5/5/5/5/5/5/5/5/5"
+    PINS = "5/5/5/5/5/5/5/5/5/5/5"    
     card = ScoreCard(PINS)
-    assert 150 == card.get_score_card_result(PINS)
+    assert 150 == card.get_score()

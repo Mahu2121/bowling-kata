@@ -7,13 +7,11 @@ class ScoreCard:
         self.pins = pins
 
     def get_pins(self):
-        
         return self.pins
 
-    def get_score_card_result(self,pins):
+    def get_score(self):
         total = 0
-        for i in range(len(pins)):
-            if pins[i].isdigit():
-                total += int(pins[i])
+        for pin in self.pins:
+            if pin.isdigit():
+                total += int(pin)
         return total
-        
