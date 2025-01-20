@@ -11,7 +11,34 @@ class ScoreCard:
 
     def get_score(self):
         total = 0
-        for pin in self.pins:
-            if pin.isdigit():
+        for i,pin in enumerate(self.pins):
+            if pin == "-":
+                continue
+            if pin == "/":
+                total += 10 - int(pin)[i+1] + int(pin)[i+1]
+            else:
                 total += int(pin)
+
         return total
+    
+    def
+
+    def symbols_to_numbers(self):
+        total = ""
+        for i,pin in enumerate(self.pins):
+            if pin == "-":
+                total += "0"
+
+            elif pin == "X":
+                total += "10"
+
+            elif pin == "/":
+                total += str(10 - int(self.pins[i-1]))
+            else:
+                total += pin
+        return total
+
+
+
+
+
