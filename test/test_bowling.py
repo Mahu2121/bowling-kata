@@ -28,7 +28,7 @@ def test_missed_rolls():
     assert 68 == card.get_score()
 
 def test_score_spare():
-    PINS = "5/5/5/5/5/5/5/5/5/5/5"    
+    PINS = "5/5/5/5/5/5/5/5/5/5/5"
     card = ScoreCard(PINS)
     assert 150 == card.get_score()
 
@@ -38,4 +38,8 @@ def test_symbols_to_numbers():
     card = ScoreCard(PINS)
     assert "55101046197320231012" == card.symbols_to_numbers()
 
-def test_
+def test_split_frames():
+
+    PINS = "5/XX4/1/7/2-23X12"
+    card = ScoreCard(PINS)
+    assert [["5","/"],["X"],["X"],["4","/"],["1","/"],["7","/"],["2","-"],["2","3"],["X","1","2"]] == card.split_frames()

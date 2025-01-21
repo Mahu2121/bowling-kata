@@ -21,9 +21,8 @@ class ScoreCard:
 
         return total
     
-    def
 
-    def symbols_to_numbers(self):
+    def __symbols_to_numbers(self):
         total = ""
         for i,pin in enumerate(self.pins):
             if pin == "-":
@@ -34,11 +33,13 @@ class ScoreCard:
 
             elif pin == "/":
                 total += str(10 - int(self.pins[i-1]))
+
             else:
                 total += pin
         return total
 
 
-
+    def __split_frames():
+        
 
 
