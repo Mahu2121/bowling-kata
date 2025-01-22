@@ -9,16 +9,23 @@ class ScoreCard:
     def get_pins(self):
         return self.pins
 
+    @va
     def get_score(self):
         total = 0
-        for i,pin in enumerate(self.pins):
-            if pin == "-":
-                continue
-            if pin == "/":
-                total += 10 - int(pin)[i+1] + int(pin)[i+1]
+        index = 0
+        for i in range(10):
+            if self.pins[index + 1] == "/":
+                total += 10 + int(self.pins[index + 2]) 
+                index += 2
+            elif self.pins[index] == "X":
+                total += 10 + int(self.pins[index + 1]) + int(self.pins[index + 2])
+                index += 1
             else:
-                total += int(pin)
-
+                if self.pins[index] != "-":  
+                    total += int(self.pins[index])
+                if self.pins[index + 1] != "-":
+                    total += int(self.pins[index+1])
+                    index += 2
         return total
     
 
