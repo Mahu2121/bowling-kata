@@ -2,6 +2,7 @@
 
 class ScoreCard:
 
+    STRIKE = 10
 
     def __init__(self, pins):
         self.pins = pins
@@ -9,16 +10,15 @@ class ScoreCard:
     def get_pins(self):
         return self.pins
 
-    @va
     def get_score(self):
         total = 0
         index = 0
         for i in range(10):
             if self.pins[index + 1] == "/":
-                total += 10 + int(self.pins[index + 2]) 
+                total += ScoreCard.STRIKE + int(self.pins[index + 2]) 
                 index += 2
             elif self.pins[index] == "X":
-                total += 10 + int(self.pins[index + 1]) + int(self.pins[index + 2])
+                total += ScoreCard.STRIKE + int(self.pins[index + 1]) + int(self.pins[index + 2])
                 index += 1
             else:
                 if self.pins[index] != "-":  
@@ -29,7 +29,7 @@ class ScoreCard:
         return total
     
 
-    def __symbols_to_numbers(self):
+    def symbols_to_numbers(self):
         total = ""
         for i,pin in enumerate(self.pins):
             if pin == "-":
@@ -39,14 +39,24 @@ class ScoreCard:
                 total += "10"
 
             elif pin == "/":
-                total += str(10 - int(self.pins[i-1]))
+                total += str(ScoreCard.STRIKE - int(self.pins[i-1]))
 
             else:
                 total += pin
         return total
 
 
-    def __split_frames():
-        
+    def split_frames(self):
 
+        rolls_splited = list(self.pins)
+        total_frames = []
+        index = 0
+        for i in range(10):
+            if len(total_frames) ==  8:
+                total_frames.append([rolls_splited[i:]])
 
+            else:
+                total_frames.append([rolls_splited[i],rolls_splited[i+1]])
+                index +=2
+
+        return total_frames
