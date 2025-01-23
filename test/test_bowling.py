@@ -42,3 +42,9 @@ def test_split_frames():
     PINS = "5/XX4/1/7/2-23X12"
     card = ScoreCard(PINS)
     assert [["5","/"],["X"],["X"],["4","/"],["1","/"],["7","/"],["2","-"],["2","3"],["X","1","2"]] == card.split_frames()
+
+def test_two_strikes_in_extra_rolls():
+
+    PINS = "9-9-9-9-9-9-9-9-9-XXX"
+    card = ScoreCard(PINS)
+    assert 111 == card.get_score()
