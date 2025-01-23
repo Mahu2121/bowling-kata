@@ -14,17 +14,17 @@ class ScoreCard:
         total = 0
         index = 0
         for i in range(10):
-            if self.pins[index + 1] == "/":
-                total += ScoreCard.STRIKE + int(self.pins[index + 2]) 
+            if self.get_pins()[index + 1] == "/" and index + 2 < len(self.get_pins()):
+                total += ScoreCard.STRIKE + int(self.get_pins()[index + 2]) 
                 index += 2
-            elif self.pins[index] == "X":
-                total += ScoreCard.STRIKE + int(self.pins[index + 1]) + int(self.pins[index + 2])
+            elif self.get_pins()[index] == "X" and index + 3 < len(self.get_pins()):
+                total += ScoreCard.STRIKE + int(self.get_pins()[index + 1]) + int(self.get_pins()[index + 2])
                 index += 1
             else:
-                if self.pins[index] != "-":  
-                    total += int(self.pins[index])
-                if self.pins[index + 1] != "-":
-                    total += int(self.pins[index+1])
+                if self.get_pins()[index] != "-":  
+                    total += int(self.get_pins()[index])
+                if self.get_pins()[index + 1] != "-":
+                    total += int(self.get_pins()[index+1])
                     index += 2
         return total
     
